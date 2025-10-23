@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #252220;
+    font-family: "Open Sans", sans-serif;
+
+}
+
+.span {
+    color: #733c28;
+}
+
+.wrap {
+    background: white;
+    border: 1px solid rgb(158, 158, 158);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(146, 146, 146);
+}
+
+.randomButton {
+    font-size: 20px;
+    padding: 4px 20px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    background-color: hsl(223, 88%, 64%);
+    color: #fff;
+    margin: 1rem 0 0 0;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+
+.randomButton:hover {
+    background-color: hsl(223, 88%, 44%);
+}
+
+.randomButton:active {
+    background-color: hsl(223, 88%, 64%);
+}
