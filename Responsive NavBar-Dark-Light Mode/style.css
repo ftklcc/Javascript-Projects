@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --bg-clr: #e4e9f7;
+    --nav-clr: #4070f4;
+    --text-clr: #ffffff;
+    --input-text-clr: #1a1919;
+    --search-clr: #fff;
+    --search-shadow: 0 0 4px rgb(0, 21, 255);
+    --primary-hvr: #0d0d18;
+    --side-nav: #010718;
+    --dark: #404040;
+    --transition: 0.3s all ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Reset */
+ol,
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--bg-clr);
+    color: var(--text-clr);
+}
+
+body.dark {
+    --bg-clr: #242424;
+    --nav-clr: #363636;
+    --text-clr: #fff;
+    --search-clr: #434343;
+    --primary-hvr: #0d0d18;
+    --search-shadow: 0 0 4px rgb(240, 240, 240);
+    --side-nav: #010718;
+    --dark: #c7c5c5;
+    --input-text-clr: #c5c5c5;
+}
+
+nav {
+    width: 100%;
+    background-color: var(--nav-clr);
+    height: 60px;
+    padding: 8px;
+    margin: 0 auto;
+}
+
+.logo {
+    color: var(--primary-clr);
+}
+
+.logo2 {
+    display: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Hamburger Button */
+.hamburger-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    display: none;
+}
+
+.hamburger-box i {
+    position: absolute;
+    color: var(--text-clr);
+    font-size: 24px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hamburger-box i.sideBarClose {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hamburger-box.active i.openSideBar {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hamburger-box.active i.sideBarClose {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Hamburger Button end*/
+
+.navlinks {
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.navlinks .navlinks-item a {
+    font-size: 20px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: var(--text-clr);
+}
+
+.navlinks-item a:hover {
+    background-color: rgba(255, 255, 255, 0.544);
+    color: var(--primary-hvr);
+}
+
+/* İCON */
+.darkLight-searchBar {
+    display: flex;
+    align-items: center;
+}
+
+.darkLight-box,
+.search-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.darkLight-box i,
+.search-box i {
+    position: absolute;
+    color: var(--text-clr);
+    font-size: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* mode İCON*/
+.darkLight-box i.sun {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.darkLight-box.active i.sun {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.darkLight-box.active i.moon {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* search İCON*/
+.search-box i.cancel {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.search-box.active i.search {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.search-box.active i.cancel {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* SEARCH BAR */
+.searchBar {
+    position: absolute;
+    top: 10px;
+    right: 4px;
+    width: 300px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--search-clr);
+    box-shadow: var(--search-shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.search-box.active~.searchBar {
+    opacity: 1;
+    top: 70px;
+    pointer-events: auto;
+}
+
+
+.searchBar input {
+    flex: 1;
+    border: none;
+    background-color: var(--search-clr);
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    color: var(--input-text-clr);
+}
+
+
+.searchBar i {
+    color: var(--dark);
+    font-size: 20px;
+}
+
+/* Responsive */
+@media screen and (max-width:768px) {
+    .hamburger-box {
+        display: flex;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .logo2 {
+        display: flex;
+        width: 100%;
+        padding: 0 14px;
+    }
+
+    .navlinks {
+        flex-direction: column;
+        position: absolute;
+        background-color: var(--nav-clr);
+        top: 62px;
+        width: 200px;
+        height: 220px;
+        padding: 10px 0;
+        border-radius: 4px;
+        transform: translateX(-30px);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .navlinks .navlinks-item {
+        width: 100%;
+        padding: 4px;
+        transition: var(--transition);
+
+    }
+
+    .navlinks-item:hover {
+        transform: translateX(15px);
+
+    }
+
+    .hamburger-box.active~.navlinks {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-4px);
+
+    }
+}
