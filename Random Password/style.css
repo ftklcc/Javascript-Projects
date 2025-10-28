@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(31, 31, 38);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 400px;
+    width: 100%;
+    margin: 2rem auto;
+}
+
+.container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: rgb(241, 193, 89);
+}
+
+.alert {
+
+    text-align: center;
+    height: 25px;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.alert-danger {
+    background-color: rgb(255, 106, 106);
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.8rem;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.form input {
+    flex: 1;
+    font-size: 1.2rem;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.form i {
+    font-size: 1.2rem;
+    padding: 4px;
+    border-radius: 4px;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s all;
+    position: relative;
+}
+
+.form i::after {
+    content: "copied!";
+    position: absolute;
+    background-color: rgb(48, 48, 163);
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 300;
+    padding: 4px;
+    border-radius: 4px;
+    top: -45px;
+    font-size: 1rem;
+    left: -30px;
+    display: none;
+}
+
+.form.active i::after {
+    display: block;
+}
+
+
+
+.genereate {
+    border: 1px solid;
+    padding: 0.4rem 0;
+    outline: none;
+    font-size: 1.2rem;
+    width: 100%;
+    margin: 1rem 0;
+    background: rgba(96, 236, 255, 0.272);
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.genereate:hover {
+    background: rgb(0, 208, 255);
+}
