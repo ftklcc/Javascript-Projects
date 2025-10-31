@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --bg-clr: #D3E2E6;
+    --container-clr: #FFFFFF;
+    --button-clr: #5e7c8a;
+    --boder-radius: 0.4rem;
+    --text-clr: #333;
+    --light-blue: #71e6fe;
+    --dark-blue: rgb(0, 60, 150);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--bg-clr);
+}
+
+.container header img {
+    max-width: 100%;
+    width: 200px;
+}
+
+.container h4 {
+    font-size: 1.2rem;
+    color: var(--text-clr);
+}
+
+:where(.container, .input-wrapper) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+.container {
+    flex-direction: column;
+    background: var(--container-clr);
+    max-width: 100%;
+    width: 400px;
+    margin: 2rem auto;
+    border-radius: var(--boder-radius);
+    padding: 1rem 1rem;
+    box-shadow: 0 1px 5px;
+}
+
+.input-wrapper {
+    flex-direction: row;
+    gap: 5px;
+}
+
+.input-wrapper input::-webkit-inner-spin-button,
+.input-wrapper input::-webkit-outer-spin-button {
+    display: none;
+}
+
+.input-wrapper .otp-input {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--bg-clr);
+    background: none;
+    outline: none;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: var(--boder-radius);
+}
+
+.otp-input:focus {
+    border-color: var(--light-blue);
+}
+
+.otp-input:disabled {
+    border-color: #afafaf;
+}
+
+.input-btn {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    background-color: var(--button-clr);
+    color: #fff;
+    margin: 1rem 0;
+    padding: 10px;
+    border-radius: var(--boder-radius);
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.input-btn.active {
+    background-color: var(--dark-blue);
+}
+
+.input-btn.active:hover {
+    background: var(--light-blue);
+}
+
+@media screen and (max-width:420px) {
+    .container {
+        max-width: 200px;
+    }
+
+    .otp-input {
+        max-width: 26px;
+        max-height: 26px;
+        font-size: 0.2rem;
+        font-weight: 300;
+    }
+}
