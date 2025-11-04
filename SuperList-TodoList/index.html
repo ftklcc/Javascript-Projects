@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+		<title>Ayrıntlı Liste</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<main class="container">
+			<!-- HEADER START -->
+			<section class="header">
+				<article class="list-title">
+					<h1>Super List</h1>
+					<i class="fa-solid fa-list-check"></i>
+				</article>
+			</section>
+			<!-- HEADER END -->
+			<!-- FORM START -->
+			<section class="todos">
+				<p class="alert"></p>
+				<form class="form-1">
+					<input type="text" class="add-list" placeholder="add.task.or.list" maxlength="120" />
+					<div class="selector">
+						<label for="select"></label>
+						<select name="" id="select">
+							<option value="low">Low</option>
+							<option value="medium">Medium</option>
+							<option value="high">High</option>
+						</select>
+					</div>
+					<button type="submit" class="submit-btn">add</button>
+				</form>
+				<!-- Form End -->
+				<!-- FİLTER START -->
+				<article class="search-form">
+					<input type="text" class="search" placeholder="search ..." />
+				</article>
+				<article class="button-container">
+					<button class="btn active">all</button>
+					<button class="btn">low</button>
+					<button class="btn">medium</button>
+					<button class="btn">high</button>
+				</article>
+				<!-- FİLTER END -->
+				<ul class="list">
+					<!-- <li class="list-item">
+						<div class="left-item">
+							<input type="checkbox" class="check" />
+							<p>Text</p>
+						</div>
+						<div class="right-item">
+							<span class="priority">low</span>
+							<span class="date">01.01.2025</span>
+							<button class="edit-btn btn2"><i class="fa-solid fa-pen-to-square"></i></button>
+							<button class="delete-btn btn2"><i class="fa-solid fa-trash"></i></button>
+						</div>
+					</li> -->
+				</ul>
+				<div class="modal">
+					<button type="button" class="btn4" data-set="accept">accept</button>
+					<button type="button" class="btn4" data-set="cancel">cancel</button>
+				</div>
+				<div class="all-Button">
+					<button class="all-delete btn3">Hepsini Sil</button>
+				</div>
+			</section>
+		</main>
+		<script src="app.js"></script>
+	</body>
+</html>
