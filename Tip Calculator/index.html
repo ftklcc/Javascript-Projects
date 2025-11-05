@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+			integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<title>Tip Calculator</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Tip Hesaplama</h1>
+		</header>
+		<main class="container">
+			<!-- Tİp hesaplama için tutar ve tip yüzdesi -->
+			<section class="left">
+				<h2>Hesap Tutarı</h2>
+				<article class="input-group">
+					<input type="number" placeholder="300" class="amount" />
+					<i class="fa-solid fa-money-check-dollar"></i>
+				</article>
+				<article class="tip-container">
+					<h2>Bahşiş Oranı</h2>
+					<input type="number" placeholder="%1" class="tip" />
+				</article>
+				<button class="calc">Hesapla</button>
+			</section>
+			<!-- Sonuç Bölümü ve reset işlemi -->
+			<section class="right">
+				<h2 class="result">Bahşiş: 5.29 TL <br />Toplam Tutar: 28.29 TL</h2>
+				<button class="reset">Temizle</button>
+			</section>
+			<!-- UYARI KUTUSU -->
+			<div class="modal">
+				<i class="fa-solid fa-x"></i>
+				<p>Hesap tutarı ve Bahşiş oranı boş kalamaz. Eksi Değer girilemez</p>
+			</div>
+		</main>
+		<script src="app.js"></script>
+	</body>
+</html>
