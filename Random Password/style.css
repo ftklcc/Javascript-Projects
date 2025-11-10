@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --border-radius: 5px;
+    --padding: 0.5rem 1rem;
+    --text-clr: #ffffff9d;
+    --util-clr: #d2ff6f;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,96 +14,208 @@
 }
 
 body {
-    background-color: rgb(31, 31, 38);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #202020;
+    color: var(--text-clr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container {
-    max-width: 400px;
-    width: 100%;
-    margin: 2rem auto;
+    background-color: #111016;
+    padding: 3rem 1rem;
+    border-radius: var(--border-radius);
+    margin: 0.3rem;
+    width: 400px;
+    max-width: 100%;
 }
 
-.container h2 {
+.container h1 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: rgb(241, 193, 89);
-}
-
-.alert {
-
     text-align: center;
-    height: 25px;
-    border-radius: 4px;
-    margin: 1rem 0;
+
 }
 
-.alert-danger {
-    background-color: rgb(255, 106, 106);
-}
-
-.form {
+:where(.top-generator, .password-box .title, .progress) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 0.8rem;
-    background-color: #fff;
-    border-radius: 8px;
 }
 
-.form input {
-    flex: 1;
-    font-size: 1.2rem;
-    border: none;
-    background: none;
-    outline: none;
-}
-
-.form i {
-    font-size: 1.2rem;
-    padding: 4px;
-    border-radius: 4px;
-    color: black;
-    cursor: pointer;
-    transition: 0.3s all;
+.top-generator {
+    background-color: #24232B;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
     position: relative;
 }
 
-.form i::after {
-    content: "copied!";
-    position: absolute;
-    background-color: rgb(48, 48, 163);
-    color: #fff;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 300;
-    padding: 4px;
-    border-radius: 4px;
-    top: -45px;
-    font-size: 1rem;
-    left: -30px;
-    display: none;
-}
-
-.form.active i::after {
-    display: block;
-}
-
-
-
-.genereate {
-    border: 1px solid;
-    padding: 0.4rem 0;
-    outline: none;
-    font-size: 1.2rem;
-    width: 100%;
-    margin: 1rem 0;
-    background: rgba(96, 236, 255, 0.272);
-    color: #fff;
-    border-radius: 4px;
+.top-generator .fa-copy {
     cursor: pointer;
-    transition: 0.3s all;
+    transition: 0.3s all ease;
+    font-size: 1.2rem;
 }
 
-.genereate:hover {
-    background: rgb(0, 208, 255);
+.top-generator .fa-copy:hover {
+    color: var(--util-clr);
+}
+
+.password-box {
+    background-color: #24232B;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+}
+
+
+
+.password-box .title .length {
+    color: var(--util-clr);
+    font-size: 1.3rem;
+}
+
+.range {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 1px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: var(--border-radius);
+}
+
+.range:hover {
+    opacity: 1;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--util-clr);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--util-clr);
+    cursor: pointer;
+}
+
+.progress {
+    background: #18171F;
+    width: 100%;
+    height: 5px;
+    margin: 1.4rem 0;
+    border-radius: var(--border-radius);
+}
+
+.progress::before {
+    content: "";
+    width: 50%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--util-clr);
+    transition: 0.3s all ease;
+}
+
+.progress.very-weak::before {
+    width: 20%;
+    background-color: #ff2b2b;
+}
+
+.progress.weak::before {
+    width: 40%;
+    background-color: #fe9f10;
+}
+
+.progress.medium::before {
+    width: 60%;
+    background-color: #ffff12;
+}
+
+.progress.strong::before {
+    width: 80%;
+    background-color: #75e900;
+}
+
+.progress.very-strong::before {
+    width: 100%;
+    background-color: #008000;
+}
+
+.options h3 {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.option input {
+    width: 18px;
+    height: 18px;
+    margin: 0.4rem 0;
+    accent-color: var(--util-clr);
+    cursor: pointer;
+}
+
+.option label {
+    cursor: pointer;
+}
+
+.options .option:nth-child(2) {
+    pointer-events: none;
+}
+
+
+
+.generate {
+    width: 100%;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    background: none;
+    border: 1px solid var(--util-clr);
+    color: var(--util-clr);
+    cursor: pointer;
+    margin: 1rem 0;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.3s ease all;
+}
+
+.generate:hover {
+    background-color: var(--util-clr);
+    color: black;
+}
+
+.modal {
+    width: 100%;
+    height: 40px;
+    background-color: #24232B;
+    top: 0;
+    left: 0;
+    position: absolute;
+    border-radius: var(--border-radius);
+    text-align: center;
+    place-content: center;
+    color: var(--util-clr);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s all ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
 }

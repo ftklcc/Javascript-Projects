@@ -4,19 +4,56 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-		<title>Random Password</title>
+		<title>PassWord Generator</title>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div class="container">
-			<h2>Genereate Random Password</h2>
-			<p class="alert"></p>
-			<div class="form">
-				<input type="text" class="passInput" placeholder="password" readonly />
+		<section class="container">
+			<h1>Password Generator</h1>
+			<section class="top-generator">
+				<p class="passwordText">13Csw2S&''^!sws</p>
 				<i class="fa-solid fa-copy"></i>
-			</div>
-			<button class="genereate">Genereate</button>
-		</div>
+				<div class="modal"><h2>Copied!</h2></div>
+			</section>
+			<section class="password-box">
+				<!-- FORM TOP -->
+				<article class="top">
+					<div class="title">
+						<p>Character Length</p>
+						<p class="length">10</p>
+					</div>
+					<div class="range-input">
+						<input type="range" min="1" max="30" step="1" id="range" class="range" value="10" />
+					</div>
+					<div class="progress"></div>
+				</article>
+				<!-- FORM TOP END -->
+				<ul class="options">
+					<h3>Password Setting</h3>
+					<li class="option">
+						<input type="checkbox" id="lowercase" checked />
+						<label for="lowercase">Include LowerCase</label>
+					</li>
+
+					<li class="option">
+						<input type="checkbox" id="uppercase" />
+						<label for="uppercase">Include UpperCase</label>
+					</li>
+
+					<li class="option">
+						<input type="checkbox" id="numbers" />
+						<label for="numbers">Include Numbers</label>
+					</li>
+
+					<li class="option">
+						<input type="checkbox" id="symbols" />
+						<label for="symbols">Include Symbols</label>
+					</li>
+				</ul>
+
+				<button class="generate" type="submit">Generate</button>
+			</section>
+		</section>
 		<script src="app.js"></script>
 	</body>
 </html>
