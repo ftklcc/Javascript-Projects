@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+	<title>Document</title>
+	<link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+	<main class="container">
+		<!-- CONFİG SCREEN -->
+		<section class="config-screen">
+			<h1>Quiz Configuration</h1>
+			<h3>Select Category</h3>
+			<article class="category-options">
+				<!-- <button type="button" class="category-option active">Kültür</button>
+					<button type="button" class="category-option">Matematik</button>
+					<button type="button" class="category-option">Spor</button>
+					<button type="button" class="category-option">Tarih</button>
+					<button type="button" class="category-option">Türkçe</button> -->
+			</article>
+			<h3>Number Of Question</h3>
+			<article class="number-options">
+				<button type="button" class="number-option active">5</button>
+				<button type="button" class="number-option">10</button>
+				<button type="button" class="number-option">15</button>
+				<button type="button" class="number-option">20</button>
+			</article>
+			<article class="start-button-action">
+				<button type="button" class="start-button">START QUİZ</button>
+			</article>
+		</section>
+		<!-- QUİZ SCREEN -->
+		<section class="quiz-screen hidden">
+			<header class="quiz-header">
+				<h3>Quiz App</h3>
+				<article class="quiz-time">
+					<i class="fa-regular fa-clock"></i>
+					<span class="time"></span>
+				</article>
+			</header>
+			<article class="quiz-body">
+				<h3 class="question"></h3>
+				<ul class="question-options">
+					<!-- <li class="question-option">Ankara</li>
+						<li class="question-option">İstanbul</li>
+						<li class="question-option">Diyarbakır</li>
+						<li class="question-option">Gaziantep</li> -->
+				</ul>
+			</article>
+			<article class="quiz-footer">
+				<h4>0 / 5</h4>
+				<button class="next-button hidden">Next Question</button>
+			</article>
+		</section>
+		<!-- End Screen -->
+		<section class="end-screen hidden">
+			<img src="./assets/img/quiz-over.png" alt="quiz-picture" />
+			<h3>Quiz Completed</h3>
+			<p>10 soruda 6 doğru cevap !</p>
+			<button class="restart-button">Restart Quiz</button>
+		</section>
+	</main>
+	<script type="module" src="./assets/js/app.js"></script>
+</body>
+
+</html>
