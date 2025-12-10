@@ -90,7 +90,7 @@ const startQuiz = () => {
 const restartQuiz = () => {
     resultContainer.style.display = 'none';
     startContainer.style.display = 'block'
-    questionIndexHistory.length = 0
+    questionIndexHistory = [];
     correctAnswerCount = 0
 }
 
