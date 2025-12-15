@@ -54,41 +54,41 @@ body {
 }
 
 /* Dark Light  */
-body.dark {
+body.light {
     background: #f8f8f8;
     color: #0f0f15;
 }
 
-body.dark .menu-img {
+body.light .menu-img {
     border-color: rgb(59, 59, 59);
 }
 
-body.dark .title {
+body.light .title {
     color: rgb(86, 86, 180);
     border-color: rgb(46, 46, 141);
 }
 
-body.dark .menu-info header {
+body.light .menu-info header {
     border-color: #0f0f15;
 }
 
-body.dark .filter-btn {
+body.light .filter-btn {
     color: #0f0f15;
     border-color: #0f0f15;
 }
 
-body.dark .filter-btn:hover {
+body.light .filter-btn:hover {
     color: #fff;
 }
 
-body.dark .price {
+body.light .price {
     color: #0f0f15;
 }
 
 /* dark light end */
 
 /* dark light button */
-.darkLight {
+.themeButton {
     position: relative;
     font-size: 22px;
     background: none;
@@ -100,8 +100,8 @@ body.dark .price {
 
 
 
-.darkLight .moon,
-.darkLight .sun {
+.themeButton .moon,
+.themeButton .sun {
     color: rgb(118, 118, 250);
     position: absolute;
     left: 20px;
@@ -116,18 +116,18 @@ body.dark .price {
 
 
 
-.darkLight .sun {
+.themeButton .sun {
     color: #0f0f15;
     opacity: 0;
     pointer-events: none;
 }
 
-.darkLight.active i.sun {
+.themeButton.active i.sun {
     opacity: 1;
     pointer-events: auto;
 }
 
-.darkLight.active i.moon {
+.themeButton.active i.moon {
     opacity: 0;
     pointer-events: none;
 }

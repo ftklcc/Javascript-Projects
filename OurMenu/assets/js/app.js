@@ -73,21 +73,34 @@ const menu = [
     },
 ]
 
-const sectionCenter = document.querySelector('.section-center')
 const buttonContainer = document.querySelector('.button-container')
+const sectionCenter = document.querySelector('.section-center')
+const themeButton = document.querySelector('.themeButton')
 
-const modeToggle = document.querySelector('.darkLight')
-
-//Load Menu and Button
 document.addEventListener('DOMContentLoaded', () => {
-    displayMenuItem(menu)
-    createButton()
-    filter()
+    showButtonMenu()
+    showMenu(menu)
+
 })
-//*Show all Menu
-const displayMenuItem = menuItem => {
+
+const showButtonMenu = () => {
+    let categories = menu.reduce((value, item) => {
+        if (!value.includes(item.category)) {
+            value.push(item.category)
+        }
+        return value
+    }, ['tümü'])
+
+    let createButton = categories.map(category => {
+        return `<button type="button" class="filter-btn" data-id="${category}">${category}</button>`
+    }).join("")
+    buttonContainer.innerHTML = createButton
+    filter()
+}
+
+const showMenu = (menuItem) => {
     let displayMenu = menuItem.map(item => {
-        return `<article class="menu-item">
+        return ` <article class="menu-item">
 					<img src="${item.img}" alt="${item.name}" class="menu-img" />
 					<div class="menu-info">
 						<header>
@@ -98,58 +111,51 @@ const displayMenuItem = menuItem => {
 							${item.info}
 						</p>
 					</div>
-				</article>`
+				</article> `
     }).join("")
+
     sectionCenter.innerHTML = displayMenu
 }
-//*Create Button
-const createButton = () => {
-    let categories = menu.reduce((value, item) => {
-        if (!value.includes(item.category)) {
-            value.push(item.category)
-        }
-        return value
-    }, ['tümü'])
-    let dispayButtonMenu = categories.map(category => {
-        return `<button type="button" class="filter-btn" data-id="${category}">${category}</button>`
-    }).join("")
-    buttonContainer.innerHTML = dispayButtonMenu
 
-
-}
-//* Filter menu
 const filter = () => {
-    const filterBtn = document.querySelectorAll('.filter-btn')
-    filterBtn.forEach(btn => {
-        btn.addEventListener('click', e => {
-            const btnCategory = e.currentTarget.dataset.id
+    const filterBtns = document.querySelectorAll('.filter-btn')
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const btnCategory = btn.dataset.id
             const menuCategory = menu.filter(item => {
-                if (btnCategory === item.category) {
-                    return item.category
+                if (item.category === btnCategory) {
+                    return item
                 }
             })
             if (btnCategory === 'tümü') {
-                displayMenuItem(menu)
+                showMenu(menu)
             } else {
-                displayMenuItem(menuCategory)
+                showMenu(menuCategory)
             }
         })
+
     })
 }
+themeButton.addEventListener('click', () => {
+    themeButton.classList.toggle('active')
+    document.body.classList.toggle('light')
 
-//* mode Dark Light
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark')
-    modeToggle.classList.add('active')
-}
-
-modeToggle.addEventListener('click', () => {
-    modeToggle.classList.toggle('active')
-    document.body.classList.toggle('dark')
-    if (document.body.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark')
+    if (document.body.classList.contains('light')) {
+        localStorage.setItem('bg', 'light')
     } else {
-        localStorage.setItem('theme', 'light')
+        localStorage.setItem('bg', 'dark')
     }
+
 })
 
+const loadTheme = () => {
+    const theme = localStorage.getItem('bg')
+
+    if (theme === 'light') {
+        document.body.classList.add('light')
+        themeButton.classList.add('active')
+    }
+}
+
+loadTheme()
