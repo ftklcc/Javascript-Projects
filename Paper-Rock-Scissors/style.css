@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(90deg, rgb(151, 122, 230), rgb(141, 99, 238));
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    padding: 1rem;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 3rem auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.164);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.title {
+
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.096);
+    margin-bottom: 1rem;
+}
+
+.title h1 {
+    color: rgba(0, 0, 255, 0.637);
+    font-size: 30px;
+}
+
+
+
+.score__content {
+    text-align: center;
+    margin-top: 1rem;
+    place-items: center;
+}
+
+.score__content h3 {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.788);
+    width: 100px;
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.top__content {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 4rem;
+    position: relative;
+
+}
+
+.result {
+    border: 1px solid grey;
+    padding: 8px 24px;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.692);
+}
+
+.result h2 {
+    width: 90px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.match {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 25px;
+    color: rgba(0, 17, 252, 0.692);
+}
+
+.game__btn-actions,
+.play {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn,
+.play-button {
+    padding: 4px 12px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-size: 14px;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.btn:hover,
+.play-button:hover {
+    background-color: hsla(0, 0%, 5%, 0.39);
+    color: #242323;
+}
+
+.btn:active,
+.play-button:active {
+    background-color: hsla(0, 0%, 15%, 0.39);
+}
+
+.btn.active {
+    background-color: rgb(0, 110, 255);
+    color: #fff;
+}
