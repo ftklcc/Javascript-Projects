@@ -35,6 +35,7 @@ const checkWinner = (player, cpu) => {
     //Beraberlik
     if (player === cpu) {
         match.textContent = 'Draw'
+        setTimeout(() => match.textContent = '!', 1500)
         return
     }
     //Oyuncu Kazanır ise
@@ -44,17 +45,20 @@ const checkWinner = (player, cpu) => {
         (player === 'scissors' && cpu === 'paper')
     ) {
         match.textContent = 'Player Win'
+        setTimeout(() => match.textContent = '!', 1500)
         playerScore++
     }
     //Bilgisayar Kazarnı ise
     else {
         match.textContent = 'Cpu Win'
+        setTimeout(() => match.textContent = '!', 1500)
         cpuScore++
     }
 
     score.textContent = `${playerScore} - ${cpuScore}`
 
 }
+
 playButton.addEventListener('click', () => {
     let cpu = option[Math.floor(Math.random() * 3)]
     let player = playerResult.textContent
