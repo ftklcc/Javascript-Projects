@@ -1,0 +1,119 @@
+/* Genel Sıfırlama */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    min-height: 100vh;
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Alanı (Wrapper) */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    overflow: hidden;
+    background: #fff;
+}
+
+/* Input Alanı */
+.search {
+    flex: 1;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Arama Butonu */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Temizle Butonu (Clear) */
+.clear {
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #666;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear:hover {
+    background: #eee;
+    color: #333;
+}
+
+/* Fotoğraf Listesi Grid Yapısı */
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* JS ile gelecek fotoğraflar için muhtemel stiller */
+.list img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.list img:hover {
+    transform: translateY(-5px);
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 480px) {
+    .form {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    button[type="submit"] {
+        padding: 15px;
+    }
+}
