@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pokemon Api</title>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<!-- HEADER START -->
+		<header>
+			<div class="header__top mx-auto">
+				<img src="./assets/image/logo.png" alt="" />
+				<h1>PokéDEX</h1>
+			</div>
+			<div class="search__field">
+				<input type="text" placeholder="Search Pokemon..." class="search" />
+			</div>
+		</header>
+		<!-- HEADER END -->
+		<!-- MAİN START -->
+		<main class="pokemon__container mx-auto">
+			<ul class="pokemon__lists">
+				<!-- CARD START -->
+				<!-- <li class="pokemon__card fire">
+					<span class="pokemon__id">#000</span>
+					<img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png" alt="" />
+					<h3 class="pokemon__name">charizard</h3>
+					<article class="pokemon__badge-wrapper">
+						<span class="pokemon__badge fire">fire</span>
+						<span class="pokemon__badge fly">fly</span>
+					</article>
+				</li> -->
+				<!-- CARD END -->
+			</ul>
+		</main>
+		<!-- MAİN END -->
+		<!-- MODAL START -->
+		<section class="modal__overlay">
+			<div class="modal">
+				<span class="cancel__modal">&times;</span>
+
+				<article class="modal__left">
+					<div class="img__container">
+						<img src="" alt="" />
+					</div>
+				</article>
+
+				<article class="modal__right">
+					<span class="modal__id"></span>
+					<h3 class="modal__name"></h3>
+					<div class="modal__type-wrapper">
+						<!-- JS ile doldurulacak -->
+
+						<!-- <span class="modal__type grass">grass</span>
+						<span class="modal__type poison">poison</span> -->
+					</div>
+					<div class="modal__stats-wrapper">
+						<!-- JS ile doldurulacak -->
+
+						<!-- statbox start -->
+						<!-- <div class="stat__box">
+							<div class="stat__info">
+								<span class="stat__name">hp</span>
+								<span class="stat__value">60</span>
+							</div>
+							<div class="stat__progress">
+								<div class="stat__progress-fill"></div>
+							</div>
+						</div> -->
+						<!-- statbox end -->
+					</div>
+				</article>
+			</div>
+		</section>
+		<!-- MODAL END -->
+
+		<script src="./assets/js/app.js"></script>
+	</body>
+</html>
