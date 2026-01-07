@@ -86,12 +86,15 @@ body {
     opacity: 0;
     visibility: hidden;
     padding: 1rem;
+    transition: 0.3s all ease;
+    transform: scale(0);
 
 }
 
 .main.active {
     opacity: 1;
     visibility: visible;
+    transform: scale(1);
 }
 
 .weather__wrapper {
