@@ -33,7 +33,8 @@ const searchFilter = async e => {
 
 const addUI = async (data) => {
     const datas = await data
-    console.log(datas);
+    // console.log(datas);
+
     /* DOM ELMENTS */
     const el = {
         countryName: document.querySelector('.country__name'),
@@ -45,11 +46,9 @@ const addUI = async (data) => {
     //dom maniplasyonu yapılarak iki taraf eşleştirildi.
     el.countryName.textContent = datas.sys.country
     el.cityName.textContent = datas.name
-    el.weatherType.textContent = datas.weather[0].main
+    el.weatherType.textContent = datas.weather[0].description
     el.degree.textContent = `${Math.round(datas.main.temp)}°C`
     el.img.src = `https://openweathermap.org/img/wn/${datas.weather[0].icon}@2x.png`
-
-
 
 }
 const closeApp = () => {
