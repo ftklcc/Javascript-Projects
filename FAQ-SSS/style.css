@@ -59,11 +59,10 @@ section {
     padding: 10px;
     transition: var(--transition);
 
-
 }
 
 .answer {
-    max-height: 0;
+    height: 0;
     overflow: hidden;
     transition: var(--transition);
 }
@@ -79,12 +78,6 @@ section {
     color: rgba(255, 255, 255, 0.574);
 }
 
-.faq.active .answer {
-    max-height: 500px;
-    animation: fade .4s ease-in-out;
-
-}
-
 .faq.active .question {
     background-color: rgb(48, 48, 102);
 }
@@ -93,19 +86,6 @@ section {
     fill: rgb(109, 255, 109);
     transform: rotate(-180deg);
 }
-
-@keyframes fade {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 @media screen and (max-width:768px) {
     .title {
