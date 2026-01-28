@@ -15,6 +15,20 @@ body {
     font-size: 100px;
     color: #3b3b3b;
     text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* TEXT Colors dynamic */
+.text.negative {
+    color: #e74c3c;
+}
+
+.text.positive {
+    color: #27ae60;
+}
+
+.text.zero {
+    color: #333;
 }
 
 .button-container {
@@ -37,9 +51,24 @@ body {
     transition: 0.3s all;
 }
 
-.btn:hover {
-    background: rgb(10, 10, 10);
-    color: #fff;
+.btn:active {
+    transform: translateY(4px);
+}
+
+/* dynamic text color */
+.decrease:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+.reset:hover {
+    background: #7f8c8d;
+    color: white;
+}
+
+.increase:hover {
+    background: #27ae60;
+    color: white;
 }
 
 .btn:active {
