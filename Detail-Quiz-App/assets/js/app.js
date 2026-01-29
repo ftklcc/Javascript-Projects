@@ -1,191 +1,215 @@
 import { questions } from './questions.js'
 
-
+//Centralized DOM element references
 const DOM = {
+    //screens
     configScreen: document.querySelector('.config-screen'),
     quizScreen: document.querySelector('.quiz-screen'),
     endScreen: document.querySelector('.end-screen'),
-    questionOptions: document.querySelector('.question-options'),
-    categoryOptions: document.querySelector('.category-options'),
-    //-----------------------------------------------------------
+
+    //buttons
     startButton: document.querySelector('.start-button'),
     nextButton: document.querySelector('.next-button'),
     restartButton: document.querySelector('.restart-button'),
-    //-----------------------------------------------------------
-    quizTime: document.querySelector('.time'),
-    question: document.querySelector('.question'),
-    questionNumber: document.querySelector('.quiz-footer h4'),
-    resultMessage: document.querySelector('.end-screen p'),
 
+    //Configuration options
+    categoryOptions: document.querySelector('.category-options'),
+    numberOptions: document.querySelector('.number-options'),
+
+    //Quiz elements
+    questionText: document.querySelector('.question'),
+    questionOptions: document.querySelector('.question-options'),
+    questionStatus: document.querySelector('.quiz-footer h4'),
+    resultMessage: document.querySelector('.end-screen p'),
+    quizTime: document.querySelector('.time')
 }
 
-let c = 'matematik'
-const QUİZ_TIME_LIMIT = 10;
-let currentTime = QUİZ_TIME_LIMIT
+
+//Application state management
+const QUIZ_TIME_LIMIT = 10;
+let currentTime = QUIZ_TIME_LIMIT
 let timer = null;
 
+let selectedCategory = 'matematik'
+let indexHistory = new Set()
+let totalQuestion = 5;
 let currentQuestion = null;
-let numberOfQuestion = 5;
-let indexHistory = []
 let score = 0;
 
 
 
 
-
-
-
-
-
-const runEvents = () => {
+//Entry point of the application
+const initApp = () => {
     renderQuestion()
     DOM.nextButton.addEventListener('click', renderQuestion)
-    DOM.restartButton.addEventListener('click', showConfig)
+    DOM.restartButton.addEventListener('click', configScreen)
     DOM.startButton.addEventListener('click', startQuiz)
-    document.addEventListener('DOMContentLoaded', showConfigButton)
+    createCategoryButtons()
+    activeNumberQuestion()
 }
 
-
-const resetTimer = () => {
-    clearInterval(timer)
-    currentTime = QUİZ_TIME_LIMIT
-    DOM.quizTime.innerHTML = `${currentTime}s`
-}
-
-const startTimer = () => {
-    timer = setInterval(() => {
-        currentTime--
-        DOM.quizTime.innerHTML = `${currentTime}s`
-
-        if (currentTime <= 0) {
-            clearInterval(timer)
-            highLightAnswer()
-            DOM.nextButton.classList.remove('hidden')
-            DOM.questionOptions.querySelectorAll('.question-option')
-                .forEach(option => option.style.pointerEvents = 'none')
-        }
-    }, 1000)
-}
-
+//Returns a random unanswered question from selected category
 const getRandomQuestion = () => {
-    //tüm sorular arasından kategoriyi bul
-    const foundCategory = questions.find(cat => cat.category === c).questions || [];
-    //eğer sorulan soru sayısı istenen soru sayısına eşit veya büyükse quiz bitti
-    if (indexHistory.length >= numberOfQuestion) {
-        showResultScreen()
-        return
-    }
-    //daha önce sorulmamış sorular
-    const availableQuestion = foundCategory
-        .filter((_, index) => !indexHistory.includes(index))
-    //rastgele soru
-    const randomQuestion = availableQuestion[Math.floor(Math.random() * availableQuestion.length)]
-    //rastgele sorunun indexi
-    const randomQuestionIndex = foundCategory.indexOf(randomQuestion)
-    //sorulan sorunun indexini history'e ekle
-    indexHistory.push(randomQuestionIndex)
+    const foundCategory = questions.find(q => q.category === selectedCategory).questions || [];
+    if (!foundCategory) return;
 
-    return randomQuestion
+    //Get indexes of unused questions
+    const availableQuestion = foundCategory
+        .map((_, i) => i)
+        .filter(i => !indexHistory.has(i))
+
+    //Stop quiz if question limit reached
+    if (indexHistory.size >= totalQuestion) {
+        return endQuiz();
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableQuestion.length);
+    const randomQuestion = availableQuestion[randomIndex]
+    indexHistory.add(randomQuestion);
+
+    console.log(indexHistory);
+    return foundCategory[randomQuestion]
 }
+
+//Renders question content to UI
 const renderQuestion = () => {
     currentQuestion = getRandomQuestion()
-    if (!currentQuestion) return
+    if (!currentQuestion) return;
+
     resetTimer()
     startTimer()
-    //Seçenekleri temizle
-    DOM.questionOptions.innerHTML = ""
-    //Yeni souruyu ekle
-    DOM.question.textContent = currentQuestion.question
-    //Next button gizle
+
+    //at the beginning options list clear
+    DOM.questionOptions.innerHTML = "";
+    //show question
+    DOM.questionText.textContent = currentQuestion.question
+    //hidden again in the new question
     DOM.nextButton.classList.add('hidden')
-    //Soru numarasını güncelle
-    DOM.questionNumber.innerHTML = `${indexHistory.length} / ${numberOfQuestion}`
-    //Seçenekleri ekle 
+    DOM.questionStatus.textContent = `${indexHistory.size} / ${totalQuestion}`
+    DOM.quizTime.textContent = `${currentTime}s`
+
+
+
     currentQuestion.options.forEach((option, index) => {
-        const li = document.createElement('li')
-        li.className = 'question-option'
+        const li = document.createElement('li');
+        li.classList.add('question-option')
         li.innerHTML = option
         DOM.questionOptions.appendChild(li)
-        //Seçeneklere tıklama eventi ekle
         li.addEventListener('click', () => handleAnswer(li, index))
     })
 }
-
+//correct or incorrect answer
 const handleAnswer = (li, index) => {
-    //Doğru cevabı kontrol et
+    //returns false or true when clicked
+    // datadaki correct answer ile yukarıdaki li index eşit ise
     const isCorrect = currentQuestion.correctAnswer === index
-    //Seçeneğe doğru veya yanlış classı ekle
+    //Add class based on true/false status
     li.classList.add(isCorrect ? 'correct' : 'incorrect')
-    //Yanlış cevap seçildiğinde doğru cevabı göster ve score gunceleme
-    !isCorrect ? highLightAnswer() : score++;
-    clearInterval(timer)
-    //Next button göster
-    DOM.nextButton.classList.remove('hidden')
-    //Tıklama işlemi sonrası Tüm seçenekleri pasif yap
-    DOM.questionOptions.querySelectorAll('.question-option')
-        .forEach(option => option.style.pointerEvents = 'none')
 
+    //yanlış cevap'da doğru cevap yeşil yanacak/ true değer'de
+    //doğru cevap'da ise score'a +1 eklenecek./ false değer'de
+    !isCorrect ? highlightAnswer() : score++;
+    clearInterval(timer)
+    //second click blocked
+    DOM.questionOptions.querySelectorAll('.question-option')
+        .forEach(opt => opt.style.pointerEvents = 'none')
+    DOM.nextButton.classList.remove('hidden')
 }
-//Doğru cevabı göster
-const highLightAnswer = () => {
-    //Doğru cevabın li elementini bul
-    const correctLi = DOM.questionOptions.querySelectorAll('.question-option')[currentQuestion.correctAnswer]
-    //Doğru cevaba correct classı ekle
+
+const highlightAnswer = () => {
+    const correctLi = DOM.questionOptions
+        .querySelectorAll('.question-option')[currentQuestion.correctAnswer]
     correctLi.classList.add('correct')
 }
+//starts the countdown timer
+const startTimer = () => {
+    timer = setInterval(() => {
+        currentTime--
+        DOM.quizTime.textContent = `${currentTime}s`
 
-const showResultScreen = () => {
+
+        if (currentTime <= 0) {
+            clearInterval(timer)
+            highlightAnswer()
+            DOM.questionOptions.querySelectorAll('.question-option')
+                .forEach(opt => opt.style.pointerEvents = 'none')
+            DOM.nextButton.classList.remove('hidden')
+
+        }
+    }, 1000)
+}
+//resets timer 
+const resetTimer = () => {
+    clearInterval(timer);
+    currentTime = QUIZ_TIME_LIMIT;
+    DOM.quizTime.textContent = `${currentTime}s`
+}
+//ends the quiz and shows result screen
+const endQuiz = () => {
     DOM.quizScreen.classList.add('hidden')
     DOM.endScreen.classList.remove('hidden')
-    DOM.resultMessage.textContent = `${numberOfQuestion} soruda ${score} doğru cevap !`
+    DOM.resultMessage.textContent = `${totalQuestion} soru da ${score} doğru cevap ! `
+    resetQuiz()
 }
-//Show Config Screen
-const showConfig = () => {
+//show config screen
+const configScreen = () => {
     DOM.endScreen.classList.add('hidden')
     DOM.configScreen.classList.remove('hidden')
     resetQuiz()
-    resetTimer()
 }
-//Start Quiz 
+//start quiz with selected options
 const startQuiz = () => {
     DOM.configScreen.classList.add('hidden')
     DOM.quizScreen.classList.remove('hidden')
-    c = document.querySelector('.category-option.active').textContent.toLowerCase()
-    numberOfQuestion = parseInt(DOM.configScreen.querySelector('.number-option.active').textContent)
+
+    selectedCategory = DOM.categoryOptions
+        .querySelector('.category-option.active').textContent.toLowerCase()
+
+    totalQuestion = parseInt(DOM.numberOptions
+        .querySelector('.number-option.active').textContent
+    )
+
+
     resetQuiz()
     resetTimer()
     renderQuestion()
 }
+//reset quiz auxiliary function
 const resetQuiz = () => {
-    indexHistory = []
+    indexHistory.clear()
     score = 0
 }
-//Config Button Active inActive
-DOM.configScreen.querySelectorAll('.number-option').forEach(option => {
-    option.addEventListener('click', () => {
-        //Aktif olanı pasif yap
-        option.parentNode.querySelector('.active').classList.remove('active')
-        //Tıklananı aktif yap
-        option.classList.add('active')
-    })
-})
+//create category selection buttons
+const createCategoryButtons = () => {
+    //Extract category names
+    const category = questions.map(q => q.category)
+    if (!category) return;
 
-//Questions'dan Category Başlıklarından alınıyor yeni bir kategori eklendiğinde 
-//Otomatik tekrar buton eklenecektır.
-const showConfigButton = () => {
-    DOM.categoryOptions.innerHTML = "";
-    questions.forEach((cat) => {
+    category.forEach(item => {
         const button = document.createElement('button')
-        button.className = 'category-option'
-        button.textContent = cat.category
+        button.textContent = item
         button.type = 'button'
-        if (cat.category.toLowerCase() === c) {
-            button.classList.add('active')
-        }
+        button.classList.add('category-option')
         DOM.categoryOptions.appendChild(button)
-
     })
-    DOM.categoryOptions.querySelectorAll('.category-option').forEach(option => {
+    //set first button as active
+    const firstButton = DOM.categoryOptions.querySelector('.category-option')
+    firstButton.classList.add('active')
+
+    const allButton = DOM.categoryOptions.querySelectorAll('.category-option')
+
+    allButton.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            btn.parentNode.querySelector('.active').classList.remove('active')
+            e.target.classList.add('active')
+        })
+    })
+
+}
+//handles question count selection
+const activeNumberQuestion = () => {
+    DOM.configScreen.querySelectorAll('.number-option').forEach(option => {
         option.addEventListener('click', () => {
             option.parentNode.querySelector('.active').classList.remove('active')
             option.classList.add('active')
@@ -194,4 +218,7 @@ const showConfigButton = () => {
 }
 
 
-runEvents()
+
+
+
+document.addEventListener('DOMContentLoaded', initApp)

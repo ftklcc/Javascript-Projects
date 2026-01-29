@@ -1,85 +1,109 @@
-# Detaylı Quiz Uygulaması
+# [EN] Quiz App – Vanilla JavaScript
 
-Bu proje, HTML, CSS ve Vanilla JavaScript kullanılarak geliştirilmiş modern ve etkileşimli bir Quiz Uygulamasıdır. Kullanıcılar farklı kategorilerde bilgilerini test edebilir ve soru sayısını özelleştirebilirler.
+A quiz application built with **Vanilla JavaScript**, focused on **explicit state management** and **controlled UI flow** without using any framework.
 
-## Özellikle
+This project is intentionally kept framework-free to demonstrate how application logic, state, and side effects can be handled in plain JavaScript.
 
-- **Kategori Seçimi:** Çeşitli konulardan seçim yapabilirsiniz (verilerden dinamik olarak yüklenir).
-- **Özelleştirilebilir Soru Limiti:** Quiz oturumunuz için soru sayısını (5, 10, 15 veya 20) seçebilirsiniz.
-- **Zamanlayıcı Sistemi:** Her soruyu cevaplamak için 10 saniyeniz vardır.
-- **Anlık Geri Bildirim:** Doğru ve yanlış cevaplar için anında görsel geri bildirim alırsınız.
-- **Skor Takibi:** Quiz sonunda toplam skorunuzu görebilirsiniz.
-- **Responsive Tasarım:** Masaüstü ve mobil cihazlarda sorunsuz çalışır.
+### ![alt text](/assets/img/image.png)
 
-## Kullanılan Teknolojiler ve Kod Yapısı
+## Core Focus
+- Predictable application state
+- Controlled side effects (timer, user input)
+- Clear separation between DOM, state, and logic
+- Framework-ready code structure
 
-Proje, temiz kod prensiplerine uygun olarak modüler bir yapıda geliştirilmiştir. Aşağıda her bir teknolojinin nasıl kullanıldığına dair detaylar verilmiştir:
+## Key Implementation Details
 
-### 1. HTML (Yapı)
+### State Management
+- Quiz state (current question, score, timer, category) is managed explicitly
+- No implicit state derived from the DOM
+- State is reset safely between quiz sessions
 
-`index.html` dosyası uygulamanın iskeletini oluşturur ve tek sayfa uygulaması (SPA) mantığıyla çalışır.
+### Question Flow Control
+- Questions are selected randomly per category
+- Repeated questions are prevented using `Set`
+- Quiz ends deterministically when question limit is reached
 
-- **Kapsayıcılar:** Tüm içerik `.container` içinde merkezilenmiştir.
-- **Ekran Yönetimi:** Uygulama üç ana bölümden oluşur:
-  1.  `config-screen`: Kategori ve soru sayısı seçimi.
-  2.  `quiz-screen`: Soruların ve zamanlayıcının gösterildiği aktif oyun ekranı.
-  3.  `end-screen`: Sonuçların ve skorun gösterildiği bitiş ekranı.
-- **Gizleme Mantığı:** `.hidden` sınıfı kullanılarak aktif olmayan ekranlar gizlenir, JavaScript ile bu sınıflar değiştirilerek ekranlar arası geçiş sağlanır.
+### Timer Handling
+- Timer lifecycle is fully controlled with `setInterval` and `clearInterval`
+- No overlapping or leaking timers
+- Timeout is treated as a valid quiz state (answer locked, correct answer shown)
 
-### 2. CSS (Tasarım)
+### UI Interaction Safety
+- User input is disabled after answer selection or timeout
+- UI always reflects application state, not the other way around
+- Defensive resets prevent invalid states on restart
 
-`style.css` dosyası modern ve kullanıcı dostu bir arayüz sağlar.
+## Techniques Used
+- Vanilla JavaScript (ES Modules)
+- Centralized DOM references
+- Manual state management
+- `setInterval` / `clearInterval`
+- `Set` for uniqueness control
+- Event-driven UI updates
 
-- **Yerleşim (Layout):** Flexbox ve Grid sistemleri kullanılarak duyarlı (responsive) bir düzen oluşturulmuştur.
-  - `display: grid`: Kategori ve sayı seçeneklerini düzenli bir ızgara yapısında göstermek için kullanılmıştır.
-- **Renk Paleti:** Gradyan arka planlar (`linear-gradient`) ve uyumlu renk tonları kullanılarak estetik bir görünüm elde edilmiştir.
-- **Etkileşimler:** `hover` ve `active` durumları için geçiş efektleri (`transition`) eklenmiştir.
-- **Geri Bildirim:** Doğru cevaplar için yeşil (`.correct`), yanlış cevaplar için kırmızı (`.incorrect`) renk kodları tanımlanmıştır.
+---
+---
+---
+# [TR] Quiz App – Vanilla JavaScript
 
-### 3. JavaScript (Mantık)
+Bu proje, **herhangi bir framework kullanmadan**, tamamen **Vanilla JavaScript** ile geliştirilmiş bir quiz uygulamasıdır.  
+Odak noktası bir oyun yapmak değil; **durum yönetimi (state)**, **kontrol akışı** ve **yan etkilerin (side effects)** doğru yönetilmesidir.
 
-`assets/js/app.js` dosyası uygulamanın beynidir ve modern ES6+ özellikleri ile yazılmıştır.
+Bu nedenle proje bilinçli olarak framework’süz tutulmuştur.
 
-#### Temel Fonksiyonlar:
+---
 
-- **DOM Yönetimi:** Tüm HTML elementleri `DOM` objesi altında toplanarak kodun okunabilirliği artırılmıştır.
-- `runEvents()`: Sayfa yüklendiğinde gerekli tüm olay dinleyicilerini (click events) başlatır.
-- `showConfigButton()`: `questions.js` dosyasından gelen kategorileri dinamik olarak okur ve butonları oluşturur.
-- `startQuiz()`: Seçilen ayarlara göre oyunu başlatır, değişkenleri sıfırlar.
-- `getRandomQuestion()`: Seçilen kategoriden rastgele bir soru getirir. Daha önce sorulan soruların tekrar gelmemesini (`indexHistory` dizisi ile) sağlar.
-- `renderQuestion()`: Soruyu ve şıkları ekrana basar, zamanlayıcıyı başlatır.
-- `handleAnswer()`: Kullanıcının cevabını kontrol eder, doğru/yanlış durumuna göre stil ekler ve skoru günceller.
-- `startTimer()`: Her soru için 10 saniyelik geri sayımı yönetir. Süre dolduğunda otomatik olarak sonraki adıma geçer.
+## Temel Odak Noktaları
+
+- Öngörülebilir uygulama durumu (predictable state)
+- Kontrol altında tutulan yan etkiler (timer, kullanıcı etkileşimi)
+- DOM, state ve iş mantığının net ayrımı
+- Framework’e taşınabilir kod yapısı
+
+---
+
+## Uygulama Detayları
+
+### Durum (State) Yönetimi
+- Quiz’in tüm durumu (aktif soru, skor, süre, kategori) açık değişkenlerle yönetilir
+- DOM üzerinden dolaylı state okunmaz
+- Quiz her başlatıldığında state güvenli şekilde sıfırlanır
+
+### Soru Akışı Kontrolü
+- Sorular kategoriye göre rastgele seçilir
+- Aynı soru tekrar edilmez (`Set` kullanımı)
+- Belirlenen soru sayısına ulaşıldığında quiz deterministik olarak sonlanır
+
+### Zamanlayıcı (Timer) Yönetimi
+- Timer yaşam döngüsü `setInterval` / `clearInterval` ile tamamen kontrol edilir
+- Üst üste çalışan timer oluşmaz
+- Süre dolması, geçerli bir quiz durumu olarak ele alınır (cevap kilitlenir, doğru cevap gösterilir)
+
+### Kullanıcı Etkileşimi Güvenliği
+- Cevap seçildikten veya süre bittikten sonra etkileşim kilitlenir
+- UI her zaman state’i yansıtır, state UI’dan türetilmez
+- Restart senaryolarında hatalı durumlara karşı savunmalı sıfırlama yapılır
+
+---
+
+## Kullanılan Teknikler
+
+- Vanilla JavaScript (ES Modules)
+- Merkezi DOM referansları
+- Manuel state yönetimi
+- `setInterval` / `clearInterval`
+- Tekrarlı veriyi önlemek için `Set`
+- Event tabanlı UI güncellemeleri
+
+---
 
 ## Proje Yapısı
 
-```text
-Detail-Quiz-App/
-├── assets/
-│   ├── css/
-│   │   └── style.css      # Grid ve Flexbox tabanlı stiller
-│   ├── img/               # Görsel varlıklar
-│   └── js/
-│       ├── app.js         # Ana mantık ve DOM manipülasyonu
-│       └── questions.js   # Kategori ve soru veri havuzu
-└── index.html             # Ana HTML yapısı
-```
-
-## Nasıl Kullanılır
-
-1.  Repoyu klonlayın veya indirin.
-2.  `index.html` dosyasını tarayıcınızda açın.
-3.  **Ayarlar Ekranı:**
-    - Listeden bir kategori seçin.
-    - Oturum için istediğiniz soru sayısını belirleyin.
-    - "START QUİZ" butonuna tıklayın.
-4.  **Quiz Ekranı:**
-    - Soruyu okuyun ve süre dolmadan (10sn) bir cevap seçin.
-    - Devam etmek için "Next Question" butonuna tıklayın.
-5.  **Sonuç Ekranı:**
-    - Final skorunuzu görüntüleyin.
-    - Tekrar oynamak için "Restart Quiz" butonuna tıklayın.
-
-## Özelleştirme
-
-`assets/js/questions.js` dosyası JSON benzeri bir veri yapısına sahiptir. Buraya yeni objeler ekleyerek kolayca yeni kategoriler oluşturabilirsiniz. `app.js` bu değişiklikleri otomatik olarak algılayacak şekilde tasarlanmıştır.
+```txt
+quiz-app/
+│
+├─ index.html
+├─ app.js
+├─ questions.js
+└─ README.md
