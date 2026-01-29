@@ -20,17 +20,24 @@
 		<!-- HEADER END -->
 		<!-- MAİN START -->
 		<main class="pokemon__container mx-auto">
+			<!-- Loading hide -->
+			<div class="loading" id="loading">Loading Pokémons...</div>
+			<!-- loading ned -->
 			<ul class="pokemon__lists">
 				<!-- CARD START -->
-				<!-- <li class="pokemon__card fire">
-					<span class="pokemon__id">#000</span>
-					<img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png" alt="" />
-					<h3 class="pokemon__name">charizard</h3>
-					<article class="pokemon__badge-wrapper">
-						<span class="pokemon__badge fire">fire</span>
-						<span class="pokemon__badge fly">fly</span>
-					</article>
-				</li> -->
+				<template id="pokemonCardTemplate">
+					<li class="pokemon__card">
+						<span class="pokemon__id">#000</span>
+						<img
+							src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png"
+							alt="" />
+						<h3 class="pokemon__name">charizard</h3>
+						<article class="pokemon__badge-wrapper">
+							<!-- <span class="pokemon__badge fire">fire</span>
+							<span class="pokemon__badge fly">fly</span> -->
+						</article>
+					</li>
+				</template>
 				<!-- CARD END -->
 			</ul>
 		</main>
@@ -74,7 +81,7 @@
 			</div>
 		</section>
 		<!-- MODAL END -->
-
-		<script src="./assets/js/app.js"></script>
+		<!-- <script type="module" src="./assets/js/UI.js"></script> -->
+		<script type="module" src="./assets/js/app.js"></script>
 	</body>
 </html>

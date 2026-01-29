@@ -167,6 +167,21 @@ body {
     background-attachment: fixed;
 }
 
+/* LOADİNG  start */
+.loading {
+    display: none;
+    text-align: center;
+    font-size: inherit;
+    padding: 2rem;
+    font-size: 3rem;
+}
+
+.loading.active {
+    display: block;
+}
+
+/* LOADİNG  end */
+
 header {
     background: var(--glass-bg);
     padding: 4rem;
@@ -317,7 +332,7 @@ header {
     inset: 0;
     background-color: rgb(from var(--bg-dark) r g b / .8);
     backdrop-filter: blur(8px);
-    z-index: 100;
+    z-index: 10;
     opacity: 0;
     visibility: hidden;
     transform: scale(0);
@@ -340,6 +355,7 @@ header {
     color: var(--text-primary);
     transform: scale(0);
     transition: .6s all cubic-bezier(0.1, 0.5, 0.1, 1.5);
+    z-index: 20;
 }
 
 .modal__overlay.active {
