@@ -1,161 +1,121 @@
-const menu = [
-    {
-        id: 1,
-        img: './assets/images/breakfast/serpmeKahvalti.jpeg',
-        name: 'Serpme Kahvaltı',
-        price: '800',
-        category: 'kahvaltı',
-        info: 'Çeşitli peynirler, zeytinler, reçeller, yumurta ve sıcak hamur işleriyle sunulan zengin ve paylaşmaya uygun kahvaltı servisi.'
-    },
-    {
-        id: 2,
-        img: './assets/images/breakfast/omlet.jpg',
-        name: 'omlet',
-        price: '150',
-        category: 'kahvaltı',
-        info: 'Omlet, çırpılmış yumurtaların tavada pişirilmesiyle yapılan, kahvaltıda sıkça tüketilen besleyici bir yemektir. İçine peynir, sebze veya et gibi malzemeler eklenerek çeşitlendirilebilir.'
-    },
-    {
-        id: 3,
-        img: './assets/images/breakfast/menemen.jpg',
-        name: 'menemen',
-        price: '200',
-        category: 'kahvaltı',
-        info: 'Menemen, domates, biber ve yumurtayla yapılan geleneksel bir Türk kahvaltı yemeğidir. Genellikle zeytinyağında sotelenmiş sebzelerin üzerine yumurta kırılarak hazırlanır.'
-    },
-    {
-        id: 4,
-        img: './assets/images/dinner/beyti.jpg',
-        name: 'beyti',
-        price: '420',
-        category: 'ana yemek',
-        info: 'Beyti, kıymadan yapılan köftenin lavaş veya yufkaya sarılıp dilimlenerek servis edildiği, üzerine domates sosu ve yoğurt eklenen lezzetli bir et yemeğidir.'
-    },
-    {
-        id: 5,
-        img: './assets/images/dinner/guvec.webp',
-        name: 'Güveç',
-        price: '450',
-        category: 'ana yemek',
-        info: 'Güveç, et ve sebzelerin toprak kapta uzun süre pişirilmesiyle hazırlanan bir yemektir. Malzemeler genellikle kuşbaşı et, patlıcan, domates, biber, soğan ve sarımsaktır.'
-    },
-    {
-        id: 6,
-        img: './assets/images/dinner/kofte-sarma.jpg',
-        name: 'Köfte Sarma',
-        price: '470',
-        category: 'ana yemek',
-        info: 'İçi kıymayla hazırlanan köftenin dışının yufka, patlıcan veya başka bir malzemeyle sarılarak pişirildiği bir yemektir. Genellikle fırında veya tavada pişirilir, üzerine domates sosu ve yoğurt eklenerek servis edilir. Hem sunumu şık hem de lezzeti zengindir.'
-    },
-    {
-        id: 7,
-        img: './assets/images/drinks/cay.webp',
-        name: 'Çay',
-        price: '50',
-        category: 'içecekler',
-        info: 'Çayımız, özenle seçilen yapraklardan hazırlanıp özel demleme yöntemiyle 15 dakika içinde taze olarak servis edilmektedir.'
-    },
-    {
-        id: 8,
-        img: './assets/images/drinks/kahve.jpg',
-        name: 'Kahve',
-        price: '100',
-        category: 'içecekler',
-        info: 'Türk kahvemiz, taze çekilmiş çekirdeklerle geleneksel cezve yöntemiyle pişirilerek köpüğüyle birlikte sıcak olarak servis edilmektedir.'
-    },
-    {
-        id: 9,
-        img: './assets/images/drinks/limonata.jpg',
-        name: 'limonata',
-        price: '130',
-        category: 'içecekler',
-        info: 'Limonatamız, taze sıkılmış limon suyu ve doğal şekerle hazırlanarak soğuk ve ferahlatıcı şekilde servis edilmektedir.'
-    },
-]
+import { allMenu } from "./data.js";
+//Cache DOM elements for performance.
+const DOM = {
+    menuCardTemplate: document.getElementById('menuCardTemplate'),
+    menuList: document.querySelector('.section-center'),
+    buttonContainer: document.querySelector('.button-container'),
+    themeButton: document.querySelector('.themeButton'),
+    body: document.body
+}
+//Initialize the application
+const initApp = () => {
+    renderButton()
+    renderMenu(allMenu)
+    runEvents()
+    loadTheme()
 
-const buttonContainer = document.querySelector('.button-container')
-const sectionCenter = document.querySelector('.section-center')
-const themeButton = document.querySelector('.themeButton')
-
-document.addEventListener('DOMContentLoaded', () => {
-    showButtonMenu()
-    showMenu(menu)
-
-})
-
-const showButtonMenu = () => {
-    let categories = menu.reduce((value, item) => {
-        if (!value.includes(item.category)) {
-            value.push(item.category)
-        }
-        return value
-    }, ['tümü'])
-
-    let createButton = categories.map(category => {
-        return `<button type="button" class="filter-btn" data-id="${category}">${category}</button>`
-    }).join("")
-    buttonContainer.innerHTML = createButton
-    filter()
+}
+//Attach event listeners to DOM elements
+const runEvents = () => {
+    DOM.buttonContainer.addEventListener('click', filterMenu)
+    DOM.themeButton.addEventListener('click', toggleTheme)
 }
 
-const showMenu = (menuItem) => {
-    let displayMenu = menuItem.map(item => {
-        return ` <article class="menu-item">
-					<img src="${item.img}" alt="${item.name}" class="menu-img" />
-					<div class="menu-info">
-						<header>
-							<h4>${item.name}</h4>
-							<h4 class="price">${item.price} TL</h4>
-						</header>
-						<p class="menu-text">
-							${item.info}
-						</p>
-					</div>
-				</article> `
-    }).join("")
 
-    sectionCenter.innerHTML = displayMenu
-}
 
-const filter = () => {
-    const filterBtns = document.querySelectorAll('.filter-btn')
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const btnCategory = btn.dataset.id
-            const menuCategory = menu.filter(item => {
-                if (item.category === btnCategory) {
-                    return item
-                }
-            })
-            if (btnCategory === 'tümü') {
-                showMenu(menu)
-            } else {
-                showMenu(menuCategory)
-            }
-        })
+//Renders the menu list by cloning the template.
+const renderMenu = (menuItem) => {
+    // Reset container to avoid stale data
+    DOM.menuList.innerHTML = "";
+    //Create an in-memory container to batch DOM updates efficiently.
+    const fragment = document.createDocumentFragment();
+
+    menuItem.forEach(menu => {
+        //Destructure menu object for direct property access.
+        const { id, img, info, name, price } = menu;
+
+        //Clone the template structure for a new instance
+        const clone = DOM.menuCardTemplate.content.cloneNode(true)
+
+        //Select elements inside the card
+        const card = {
+            img: clone.querySelector('.menu-img'),
+            name: clone.querySelector('.menu-info h4'),
+            price: clone.querySelector('.price'),
+            menuDesc: clone.querySelector('.menu-text')
+        };
+
+        // Inject data into cloned elements
+        card.img.src = img;
+        card.name.textContent = name;
+        card.price.textContent = `${Number(price).toFixed(2)}₺`;
+        card.menuDesc.textContent = info
+
+        fragment.appendChild(clone);
 
     })
+    // Commit all updates to DOM in a single operation
+    DOM.menuList.appendChild(fragment);
 }
-themeButton.addEventListener('click', () => {
-    themeButton.classList.toggle('active')
-    document.body.classList.toggle('light')
+//Renders the button list 
+const renderButton = () => {
+    DOM.buttonContainer.innerHTML = "";
 
-    if (document.body.classList.contains('light')) {
-        localStorage.setItem('bg', 'light')
+    //Remove duplicates with Set
+    const categories = ['tümü', ...new Set(allMenu.map(item => item.category))]
+
+    categories.forEach(category => {
+        const button = document.createElement('button')
+        button.className = "filter-btn"
+        button.type = 'button'
+        button.dataset.id = category
+        button.textContent = category
+        DOM.buttonContainer.appendChild(button)
+    })
+
+
+
+}
+//Filter menu items when a category button is clicked
+const filterMenu = (e) => {
+    const btn = e.target.closest('.filter-btn')
+    //Ignore clicks outside buttons
+    if (!btn) return;
+
+    const btnCategory = btn.dataset.id
+    // filtre sonucu buraya gelecek
+    let menuCategory;
+
+
+    if (btnCategory === 'tümü') {
+        //Show all items
+        menuCategory = allMenu
     } else {
-        localStorage.setItem('bg', 'dark')
+        //filter only matching category
+        menuCategory = allMenu.filter(item => item.category === btnCategory)
     }
+    //render filtered list
+    renderMenu(menuCategory)
+}
 
-})
+//Toggle between light and dark theme
+const toggleTheme = () => {
+    DOM.body.classList.toggle('light')
+    DOM.themeButton.classList.toggle('active')
 
+    //Save current theme to localStorage
+    const isLight = DOM.body.classList.contains('light')
+    localStorage.setItem('theme', isLight ? 'light' : 'dark')
+}
+
+//Load saved theme preference from localstorage
 const loadTheme = () => {
-    const theme = localStorage.getItem('bg')
-
-    if (theme === 'light') {
-        document.body.classList.add('light')
-        themeButton.classList.add('active')
+    const getTheme = localStorage.getItem('theme')
+    if (getTheme === 'light') {
+        DOM.body.classList.add('light')
+        DOM.themeButton.classList.add('active')
     }
 }
 
-loadTheme()
+document.addEventListener('DOMContentLoaded', initApp)

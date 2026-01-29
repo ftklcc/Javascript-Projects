@@ -102,40 +102,41 @@ body.light .price {
 
 .themeButton .moon,
 .themeButton .sun {
-    color: rgb(118, 118, 250);
+    color: rgb(255, 166, 0);
     position: absolute;
     left: 20px;
     top: 20px;
-    transition: 0.3s all ease;
+    transition: .3s all ease;
 
 }
 
-.moon:hover {
-    color: #fff;
-}
-
-
-
-.themeButton .sun {
-    color: #0f0f15;
+.themeButton .moon {
     opacity: 0;
     pointer-events: none;
 }
 
-.themeButton.active i.sun {
+.themeButton .moon {
+    color: black;
+}
+
+.themeButton .moon:hover {
+    color: rgb(56, 52, 52);
+}
+
+.themeButton .sun:hover {
+    color: rgb(155, 101, 1);
+}
+
+
+.themeButton.active .sun {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.themeButton.active .moon {
     opacity: 1;
     pointer-events: auto;
 }
-
-.themeButton.active i.moon {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.sun:hover {
-    color: rgb(118, 118, 250);
-}
-
 
 
 

@@ -4,7 +4,9 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./assets/css/style.css" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 		<title>Our Menu</title>
 	</head>
 	<body>
@@ -26,21 +28,27 @@
 
 			<div class="section-center">
 				<!-- menu Start -->
-				<!-- <article class="menu-item">
-					<img src="./assets/images/breakfast/serpmeKahvalti.jpeg" alt="serpme kahvalti" class="menu-img" />
-					<div class="menu-info">
-						<header>
-							<h4>Serpme Kahvaltı</h4>
-							<h4 class="price">800 TL</h4>
-						</header>
-						<p class="menu-text">
-							Çeşitli peynirler, zeytinler, reçeller, yumurta ve sıcak hamur işleriyle sunulan zengin ve paylaşmaya uygun kahvaltı servisi.
-						</p>
-					</div>
-				</article> -->
+				<template id="menuCardTemplate">
+					<article class="menu-item">
+						<img
+							src="./assets/images/breakfast/serpmeKahvalti.jpeg"
+							alt="serpme kahvalti"
+							class="menu-img" />
+						<div class="menu-info">
+							<header>
+								<h4>Serpme Kahvaltı</h4>
+								<h4 class="price">800 TL</h4>
+							</header>
+							<p class="menu-text">
+								Çeşitli peynirler, zeytinler, reçeller, yumurta ve sıcak hamur
+								işleriyle sunulan zengin ve paylaşmaya uygun kahvaltı servisi.
+							</p>
+						</div>
+					</article>
+				</template>
 				<!-- menu END -->
 			</div>
 		</section>
-		<script src="./assets/js/app.js"></script>
+		<script type="module" src="./assets/js/app.js"></script>
 	</body>
 </html>
