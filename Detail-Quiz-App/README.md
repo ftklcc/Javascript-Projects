@@ -4,7 +4,7 @@ A quiz application built with **Vanilla JavaScript**, focused on **explicit stat
 
 This project is intentionally kept framework-free to demonstrate how application logic, state, and side effects can be handled in plain JavaScript.
 
-### ![alt text](/assets/img/image.png)
+### ![alt text](./assets/img/image.png)
 
 ## Core Focus
 - Predictable application state
