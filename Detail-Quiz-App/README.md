@@ -52,7 +52,6 @@ Odak noktası bir oyun yapmak değil; **durum yönetimi (state)**, **kontrol ak�
 
 Bu nedenle proje bilinçli olarak framework’süz tutulmuştur.
 
----
 
 ## Temel Odak Noktaları
 
@@ -61,7 +60,6 @@ Bu nedenle proje bilinçli olarak framework’süz tutulmuştur.
 - DOM, state ve iş mantığının net ayrımı
 - Framework’e taşınabilir kod yapısı
 
----
 
 ## Uygulama Detayları
 
@@ -85,7 +83,6 @@ Bu nedenle proje bilinçli olarak framework’süz tutulmuştur.
 - UI her zaman state’i yansıtır, state UI’dan türetilmez
 - Restart senaryolarında hatalı durumlara karşı savunmalı sıfırlama yapılır
 
----
 
 ## Kullanılan Teknikler
 
@@ -96,14 +93,5 @@ Bu nedenle proje bilinçli olarak framework’süz tutulmuştur.
 - Tekrarlı veriyi önlemek için `Set`
 - Event tabanlı UI güncellemeleri
 
----
 
-## Proje Yapısı
 
-```txt
-quiz-app/
-│
-├─ index.html
-├─ app.js
-├─ questions.js
-└─ README.md
