@@ -4,58 +4,35 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>SSS</title>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
 		<section>
 			<h2 class="title">SSS-FAQs</h2>
-
-			<!-- faq Start -->
-			<div class="faq">
-				<div class="question">
-					<h3>Siparişimi iptal edebilir miyim?</h3>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-						<path d="m12 6.586-8.707 8.707 1.414 1.414L12 9.414l7.293 7.293 1.414-1.414L12 6.586z" />
-					</svg>
-				</div>
-				<div class="answer">
-					<p>
-						Mağaza onaylamadan önce tüm siparişi veya siparişinizden çıkarmak istediğiniz ürünü iptal edebilirsiniz. Üyeyseniz Hesabım menüsündeki
-						Mevcut Sipariş sayfasından ürünün yanındaki İptal Et butonuna basmanız yeterlidir.
-					</p>
-				</div>
-			</div>
-			<!-- faq END -->
-			<!-- faq Start -->
-			<div class="faq">
-				<div class="question">
-					<h3>Kargoda görünen siparişimi nasıl iptal edebilirim?</h3>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-						<path d="m12 6.586-8.707 8.707 1.414 1.414L12 9.414l7.293 7.293 1.414-1.414L12 6.586z" />
-					</svg>
-				</div>
-				<div class="answer">
-					<p>Satın aldığınız ürün kargoya verilmişse siparişi iptal edemezsiniz. Kargoya verilen ürünler için iade süreci uygulanır.</p>
-				</div>
-			</div>
-			<!-- faq END -->
-			<!-- faq Start -->
-			<div class="faq">
-				<div class="question">
-					<h3>Mağaza sipariş iptal talebimi reddetti, şimdi ne olacak?</h3>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-						<path d="m12 6.586-8.707 8.707 1.414 1.414L12 9.414l7.293 7.293 1.414-1.414L12 6.586z" />
-					</svg>
-				</div>
-				<div class="answer">
-					<p>
-						Mağaza, ürünü kargoladıysa siparişi iptal edemezsiniz. Kargoya verilen ürünleri teslim aldıktan sonra iade sürecini başlatabilirsiniz.
-						Mağazanın ürünü kargolamadığı durumlarda Hesabımsayfasından Canlı Destek’e bağlanıp detaylı bilgi alabilirsiniz.
-					</p>
-				</div>
-			</div>
-			<!-- faq END -->
+			<ul class="faq__list">
+				<!-- faq Start -->
+				<template id="faqTemplate">
+					<li class="faq">
+						<article class="question">
+							<h3>Siparişimi iptal edebilir miyim?</h3>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+								<path
+									d="m12 6.586-8.707 8.707 1.414 1.414L12 9.414l7.293 7.293 1.414-1.414L12 6.586z" />
+							</svg>
+						</article>
+						<article class="answer">
+							<p>
+								Mağaza onaylamadan önce tüm siparişi veya siparişinizden
+								çıkarmak istediğiniz ürünü iptal edebilirsiniz. Üyeyseniz
+								Hesabım menüsündeki Mevcut Sipariş sayfasından ürünün yanındaki
+								İptal Et butonuna basmanız yeterlidir.
+							</p>
+						</article>
+					</li>
+				</template>
+				<!-- faq END -->
+			</ul>
 		</section>
-		<script src="app.js"></script>
+		<script type="module" src="./js/app.js"></script>
 	</body>
 </html>

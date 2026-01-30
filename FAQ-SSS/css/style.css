@@ -27,16 +27,25 @@ body {
 
 section {
     min-height: 100vh;
-    width: 80%;
+    width: 90%;
+    max-width: 1000px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+
 }
 
 .title {
     font-size: 2rem;
     margin: 2rem 0;
+    text-align: center;
+}
+
+.faq__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 60vh;
+
 }
 
 .faq {
@@ -62,7 +71,7 @@ section {
 }
 
 .answer {
-    height: 0;
+    max-height: 0;
     overflow: hidden;
     transition: var(--transition);
 }
@@ -71,11 +80,11 @@ section {
     padding-top: 1rem;
     line-height: 1.6;
     font-size: 1rem;
-    background-color: var(--text-bg-clr);
+    background-color: rgba(from var(--text-bg-clr) r g b / 0.3);
     border-radius: 0 0 10px 10px;
     padding: 10px;
     margin-top: 0.1rem;
-    color: rgba(255, 255, 255, 0.574);
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .faq.active .question {
@@ -85,6 +94,10 @@ section {
 .faq.active svg {
     fill: rgb(109, 255, 109);
     transform: rotate(-180deg);
+}
+
+.faq.active .answer {
+    max-height: 300px;
 }
 
 @media screen and (max-width:768px) {
