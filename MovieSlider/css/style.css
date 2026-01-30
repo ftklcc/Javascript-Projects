@@ -36,9 +36,18 @@ img {
     border-radius: 8px;
 }
 
-.card-image img {
+
+.card-image .movImage {
     max-width: 150px;
     border-radius: 10px;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-out;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fade-effect {
+    opacity: 0;
+    transform: scale(0.95);
 }
 
 .card-title {
@@ -70,6 +79,7 @@ img {
     cursor: pointer;
     outline: none;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .btn:hover {
@@ -78,10 +88,4 @@ img {
 
 .btn:active {
     color: hsl(234, 76%, 65%);
-}
-
-
-.fade {
-    opacity: 0;
-    transition: opacity 0.4s ease;
 }
