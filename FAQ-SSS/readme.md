@@ -1,6 +1,6 @@
 # FAQ Accordion App
 This project is a simple and performant **FAQ Frequently Asked Questions Accordion** application built with `Vanilla Javascript`.
-### ![alt text](image.png)
+### ![alt text](preview.png)
 ## Features
 - Dynamic FAQ rendering from `data.js`
 - Clean HTML structure usin `template`
