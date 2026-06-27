@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 :root {
     /* colors */
@@ -10,12 +10,11 @@
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
 
-
     /* Gölgeler & Sınırlar */
     --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     --border-radius: 20px;
     /* Transition */
-    --speed: .3s all ease-in-out;
+    --speed: 0.3s all ease-in-out;
     /* Yazı Renkleri */
     --text-primary: #fff;
     --text-secondary: rgba(255, 255, 255, 0.6);
@@ -25,55 +24,55 @@
 /* Hafif şeffaf (Opacity düşürülmüş) gradyanlar */
 /* Pokémon Tip Renk Paleti */
 .normal {
-    --type-clr: #A8A77A;
+    --type-clr: #a8a77a;
 }
 
 .fire {
-    --type-clr: #EE8130;
+    --type-clr: #ee8130;
 }
 
 .water {
-    --type-clr: #6390F0;
+    --type-clr: #6390f0;
 }
 
 .electric {
-    --type-clr: #F7D02C;
+    --type-clr: #f7d02c;
 }
 
 .grass {
-    --type-clr: #7AC74C;
+    --type-clr: #7ac74c;
 }
 
 .ice {
-    --type-clr: #96D9D6;
+    --type-clr: #96d9d6;
 }
 
 .fighting {
-    --type-clr: #C22E28;
+    --type-clr: #c22e28;
 }
 
 .poison {
-    --type-clr: #A33EA1;
+    --type-clr: #a33ea1;
 }
 
 .ground {
-    --type-clr: #E2BF65;
+    --type-clr: #e2bf65;
 }
 
 .flying {
-    --type-clr: #A98FF3;
+    --type-clr: #a98ff3;
 }
 
 .psychic {
-    --type-clr: #F95587;
+    --type-clr: #f95587;
 }
 
 .bug {
-    --type-clr: #A6B91A;
+    --type-clr: #a6b91a;
 }
 
 .rock {
-    --type-clr: #B6A136;
+    --type-clr: #b6a136;
 }
 
 .ghost {
@@ -81,15 +80,15 @@
 }
 
 .dragon {
-    --type-clr: #6F35FC;
+    --type-clr: #6f35fc;
 }
 
 .steel {
-    --type-clr: #B7B7CE;
+    --type-clr: #b7b7ce;
 }
 
 .fairy {
-    --type-clr: #D685AD;
+    --type-clr: #d685ad;
 }
 
 .dark {
@@ -159,7 +158,7 @@ ul {
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: "Outfit", sans-serif;
     background: var(--bg-gradient);
     color: var(--text-primary);
     min-height: 100vh;
@@ -231,7 +230,6 @@ header {
     box-shadow: var(--card-shadow);
 }
 
-
 /* MAİN START  */
 .pokemon__container {
     margin: 2rem auto;
@@ -242,7 +240,6 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-
 }
 
 .pokemon__card {
@@ -268,7 +265,11 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgb(from var(--type-clr) r g b / 0.1), transparent 100%);
+    background: radial-gradient(
+        circle,
+        rgb(from var(--type-clr) r g b / 0.1),
+        transparent 100%
+    );
     z-index: -1;
 }
 
@@ -330,14 +331,13 @@ header {
     justify-content: center;
     position: fixed;
     inset: 0;
-    background-color: rgb(from var(--bg-dark) r g b / .8);
+    background-color: rgb(from var(--bg-dark) r g b / 0.8);
     backdrop-filter: blur(8px);
     z-index: 10;
     opacity: 0;
     visibility: hidden;
     transform: scale(0);
-    transition: .6s all cubic-bezier(0.1, 0.5, 0.1, 1.5);
-
+    transition: 0.6s all cubic-bezier(0.1, 0.5, 0.1, 1.5);
 }
 
 .modal {
@@ -354,7 +354,7 @@ header {
     box-shadow: var(--card-shadow);
     color: var(--text-primary);
     transform: scale(0);
-    transition: .6s all cubic-bezier(0.1, 0.5, 0.1, 1.5);
+    transition: 0.6s all cubic-bezier(0.1, 0.5, 0.1, 1.5);
     z-index: 20;
 }
 
@@ -453,10 +453,6 @@ header {
     transition: 0.6s all cubic-bezier(0.1, 0.5, 0.1, 1.5);
 }
 
-
-
-
-
 /* KEY FRAMES animation */
 
 @keyframes float {
@@ -473,7 +469,7 @@ header {
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .modal {
         grid-template-columns: 1fr;
     }
@@ -495,12 +491,10 @@ header {
 
     .img__container img {
         max-width: 250px;
-
     }
 }
 
-@media screen and (max-width:360px) {
-
+@media screen and (max-width: 360px) {
     .pokemon__card .pokemon__name {
         font-size: 2.2rem;
     }
@@ -508,7 +502,6 @@ header {
     .pokemon__card img {
         width: 120px;
     }
-
 
     .pokemon__badge,
     .modal__type {
@@ -541,5 +534,4 @@ header {
     .stat__value {
         font-size: 1.1rem;
     }
-
 }
